@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><script>(function(){var hostOrigin="https://skynetchat.net";function str(v){try{return typeof v==='string'?v:(v&&v.url)||String(v||'')}catch(e){return ''}}function method(v,fallback){return String(v||fallback||'GET').toUpperCase()}function relative(u){return !/^[a-z][a-z0-9+.-]*:/i.test(u)&&!/^\/\//.test(u)}function sameHost(u){try{return !!hostOrigin&&new URL(u,hostOrigin).origin===hostOrigin}catch(e){return false}}function blocked(u){return relative(u)||sameHost(u)}function report(kind,m,u){var d={kind:kind,method:method(m),url:str(u),blocked:true,at:new Date().toISOString()};try{console.warn('[ARTIFACT_NETWORK_BLOCKED]',d)}catch(e){}try{parent.postMessage({__artifactNetwork:d},'*')}catch(e){}}var nf=window.fetch&&window.fetch.bind(window);if(nf)window.fetch=function(input,init){var u=str(input),m=method(init&&init.method,input&&input.method);if(blocked(u)){report('fetch',m,u);return Promise.resolve(new Response('',{status:200,headers:{'X-Artifact-Preview':'blocked'}}))}return nf(input,init)};try{var nb=navigator.sendBeacon&&navigator.sendBeacon.bind(navigator);if(nb)navigator.sendBeacon=function(u,data){if(blocked(str(u))){report('sendBeacon','POST',u);return true}return nb(u,data)}}catch(e){}try{var xo=XMLHttpRequest.prototype.open,xs=XMLHttpRequest.prototype.send;XMLHttpRequest.prototype.open=function(m,u){this.__artifactMethod=method(m);this.__artifactUrl=str(u);return xo.apply(this,arguments)};XMLHttpRequest.prototype.send=function(){if(blocked(this.__artifactUrl||'')){report('xhr',this.__artifactMethod,this.__artifactUrl);var self=this;setTimeout(function(){try{self.dispatchEvent(new Event('load'));self.dispatchEvent(new Event('loadend'))}catch(e){}},0);return}return xs.apply(this,arguments)}}catch(e){}document.addEventListener('submit',function(e){var f=e.target;if(!f||String(f.tagName).toLowerCase()!=='form')return;if(blocked(f.getAttribute('action')||'')){e.preventDefault();report('form',f.method||'GET',f.getAttribute('action')||'')}},true);try{var fs=HTMLFormElement.prototype.submit;HTMLFormElement.prototype.submit=function(){var u=this.getAttribute('action')||'';if(blocked(u)){report('form.submit',this.method||'GET',u);return}return fs.apply(this,arguments)}}catch(e){}})();</script><script>(function(){function mkStore(){var m={};return{getItem:function(k){return Object.prototype.hasOwnProperty.call(m,k)?m[k]:null;},setItem:function(k,v){m[k]=String(v);},removeItem:function(k){delete m[k];},clear:function(){m={};},key:function(i){return Object.keys(m)[i]||null;},get length(){return Object.keys(m).length;}};}try{window.localStorage.getItem('__t');}catch(e){try{Object.defineProperty(window,'localStorage',{value:mkStore(),configurable:true});}catch(e2){}}try{window.sessionStorage.getItem('__t');}catch(e){try{Object.defineProperty(window,'sessionStorage',{value:mkStore(),configurable:true});}catch(e2){}}})();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oportunidade Exclusiva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --canvas: #0a0a0f;
+      --surface: #14141b;
+      --text: #f0e6d6;
+      --text-mute: #6b6358;
+      --accent: #c9a227;
+      --border: #2e2922;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--canvas); color: var(--text); }
+    h1, h2, h3, .display { font-family: 'Playfair Display', serif; }
+    .card { background: var(--surface); border: 1px solid var(--border); }
+    .accent { color: var(--accent); }
+    .btn-accent { background: var(--accent); color: var(--canvas); font-weight: 600; transition: transform .15s ease, box-shadow .15s ease; }
+    .btn-accent:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,162,39,.3); }
+    .btn-accent:active { transform: translateY(0); }
+    .focus-visible:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .stat-enter { animation: statEnter .6s ease forwards; opacity: 0; }
+    @keyframes statEnter { to { opacity: 1; transform: translateY(0); } }
+    .pulse-dot { animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .4; } }
+    .marquee { animation: marquee 20s linear infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .level-card { transition: transform .2s ease, box-shadow .2s ease; }
+    .level-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.4); }
+    .level-card.active { border-color: var(--accent); box-shadow: 0 0 24px rgba(201,162,39,.15); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+  </style>
+<style>html,body{overscroll-behavior:contain}canvas{max-width:100%;height:auto}img{max-width:100%}</style></head>
+<body class="min-h-screen">
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[var(--canvas)]/80 border-b border-[var(--border)]">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-[var(--accent)] flex items-center justify-center">
+          <svg class="w-6 h-6 text-[var(--canvas)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <span class="font-semibold text-lg tracking-tight">Rede Ouro</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#plan" class="hover:text-[var(--accent)] transition-colors">Plano</a>
+        <a href="#matrix" class="hover:text-[var(--accent)] transition-colors">Matriz</a>
+        <a href="#testimonials" class="hover:text-[var(--accent)] transition-colors">Depoimentos</a>
+        <a href="#join" class="btn-accent px-5 py-2 rounded-lg">Acesso</a>
+      </nav>
+      <button class="md:hidden p-2 focus-visible" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(201,162,39,.08),transparent)] pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--surface)] border border-[var(--border)] text-xs uppercase tracking-wider mb-6 text-[var(--text-mute)]">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)] pulse-dot"></span>
+        Inscrições limitadas — próximo lote encerra em <span id="countdown" class="font-semibold text-[var(--accent)] ml-1"></span>
+      </div>
+      <h1 class="display text-4xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+        Acesso à <span class="accent">Matriz Ouro</span><br />
+        <span class="text-[var(--text-mute)]">Estrutura de Crescimento</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-[var(--text-mute)] max-w-2xl mx-auto mb-8 leading-relaxed">
+        Posicione-se nos três níveis de pacote e receba bônus progressivos por cada indicação direta e indireta. Prazo de vesting e metas de indicação garantem sustentabilidade da rede.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+        <div class="flex items-center gap-2 text-sm text-[var(--text-mute)]">
+          <svg class="w-5 h-5 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Entrada via PIX/Boleto
+        </div>
+        <div class="flex items-center gap-2 text-sm text-[var(--text-mute)]">
+          <svg class="w-5 h-5 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+          Saque após carência e metas
+        </div>
+      </div>
+      <a href="#join" class="btn-accent px-8 py-4 rounded-xl text-lg inline-flex items-center gap-2 focus-visible">
+        Entrar na Rede
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="max-w-4xl mx-auto grid grid-cols-3 gap-4 mt-12">
+      <div class="card rounded-xl p-4 text-center stat-enter" style="--i:0">
+        <div class="text-3xl font-bold accent">4.820</div>
+        <div class="text-sm text-[var(--text-mute)]">Membros Ativos</div>
+      </div>
+      <div class="card rounded-xl p-4 text-center stat-enter" style="--i:1">
+        <div class="text-3xl font-bold accent">R$ 12.4M</div>
+        <div class="text-sm text-[var(--text-mute)]">Volume Bloqueado</div>
+      </div>
+      <div class="card rounded-xl p-4 text-center stat-enter" style="--i:2">
+        <div class="text-3xl font-bold accent">94%</div>
+        <div class="text-sm text-[var(--text-mute)]">Retenção 30d</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <section class="border-y border-[var(--border)] bg-[var(--surface)]/50 py-3 overflow-hidden">
+    <div class="marquee whitespace-nowrap text-sm text-[var(--text-mute)]">
+      <span class="inline-block px-8">★ João M. liberou R$ 8.400 — 32 indicados</span>
+      <span class="inline-block px-8">★ Ana S. atingiu Ouro — bônus R$ 3.200</span>
+      <span class="inline-block px-8">★ Pedro R. completou vesting — saque R$ 5.000</span>
+      <span class="inline-block px-8">★ João M. liberou R$ 8.400 — 32 indicados</span>
+      <span class="inline-block px-8">★ Ana S. atingiu Ouro — bônus R$ 3.200</span>
+      <span class="inline-block px-8">★ Pedro R. completou vesting — saque R$ 5.000</span>
+    </div>
+  </section>
+
+  <!-- Plan -->
+  <section id="plan" class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="display text-3xl sm:text-4xl font-black mb-4">Pacotes e Regras</h2>
+        <p class="text-[var(--text-mute)] max-w-2xl mx-auto">Escolha seu nível, cumpra metas de indicação e libere saques progressivos.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- Bronze -->
+        <div class="card rounded-2xl p-6 level-card">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-wider text-[var(--text-mute)]">Bronze</span>
+            <span class="text-xs px-2 py-1 rounded bg-[var(--accent)]/10 text-[var(--accent)]">Iniciante</span>
+          </div>
+          <div class="text-3xl font-bold mb-1">R$ 500</div>
+          <div class="text-sm text-[var(--text-mute)] mb-6">entrada única</div>
+          <ul class="space-y-2 text-sm mb-6 text-[var(--text-mute)]">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 5% direta / 2% indireta</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Meta: 3 indicados</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Vesting: 7 dias</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Saque: até R$ 2.000</li>
+          </ul>
+          <button class="w-full btn-accent py-3 rounded-lg focus-visible" data-level="bronze">Selecionar</button>
+        </div>
+
+        <!-- Prata -->
+        <div class="card rounded-2xl p-6 level-card active" style="border-color: var(--accent)">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-wider text-[var(--text-mute)]">Prata</span>
+            <span class="text-xs px-2 py-1 rounded bg-[var(--accent)]/10 text-[var(--accent)]">Recomendado</span>
+          </div>
+          <div class="text-3xl font-bold mb-1">R$ 2.000</div>
+          <div class="text-sm text-[var(--text-mute)] mb-6">entrada única</div>
+          <ul class="space-y-2 text-sm mb-6 text-[var(--text-mute)]">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 8% direta / 4% indireta</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Meta: 5 indicados</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Vesting: 14 dias</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Saque: até R$ 10.000</li>
+          </ul>
+          <button class="w-full btn-accent py-3 rounded-lg focus-visible" data-level="prata">Selecionar</button>
+        </div>
+
+        <!-- Ouro -->
+        <div class="card rounded-2xl p-6 level-card">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs uppercase tracking-wider text-[var(--text-mute)]">Ouro</span>
+            <span class="text-xs px-2 py-1 rounded bg-[var(--accent)]/10 text-[var(--accent)]">Premium</span>
+          </div>
+          <div class="text-3xl font-bold mb-1">R$ 5.000</div>
+          <div class="text-sm text-[var(--text-mute)] mb-6">entrada única</div>
+          <ul class="space-y-2 text-sm mb-6 text-[var(--text-mute)]">
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> 12% direta / 6% indireta</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Meta: 8 indicados</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Vesting: 30 dias</li>
+            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-[var(--accent)]" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Saque: até R$ 50.000</li>
+          </ul>
+          <button class="w-full btn-accent py-3 rounded-lg focus-visible" data-level="ouro">Selecionar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Matrix -->
+  <section id="matrix" class="py-16 px-4 bg-[var(--surface)]/30">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="display text-3xl sm:text-4xl font-black mb-4">Matriz de Indicações</h2>
+        <p class="text-[var(--text-mute)] max-w-2xl mx-auto">Visualize sua rede e acompanhe bônus acumulados por cada nível.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Tree -->
+        <div class="card rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-4">Sua Rede</h3>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)]">
+              <div class="w-10 h-10 rounded-full bg-[var(--accent)] flex items-center justify-center text-[var(--canvas)] font-bold">V</div>
+              <div>
+                <div class="font-semibold">Você (Prata)</div>
+                <div class="text-xs text-[var(--text-mute)]">R$ 2.000 — 3/5 indicados</div>
+              </div>
+            </div>
+            <div class="ml-6 pl-4 border-l-2 border-[var(--border)] space-y-3">
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)]">
+                <div class="w-8 h-8 rounded-full bg-[var(--text-mute)]/20 flex items-center justify-center text-xs font-medium">M1</div>
+                <div>
+                  <div class="font-medium">Membro 1 (Bronze)</div>
+                  <div class="text-xs text-[var(--text-mute)]">Bônus: R$ 25</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)]">
+                <div class="w-8 h-8 rounded-full bg-[var(--text-mute)]/20 flex items-center justify-center text-xs font-medium">M2</div>
+                <div>
+                  <div class="font-medium">Membro 2 (Bronze)</div>
+                  <div class="text-xs text-[var(--text-mute)]">Bônus: R$ 25</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)]">
+                <div class="w-8 h-8 rounded-full bg-[var(--accent)]/20 flex items-center justify-center text-xs font-medium text-[var(--accent)]">M3</div>
+                <div>
+                  <div class="font-medium">Membro 3 (Prata)</div>
+                  <div class="text-xs text-[var(--text-mute)]">Bônus: R$ 160</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Earnings -->
+        <div class="card rounded-2xl p-6">
+          <h3 class="font-bold text-lg mb-4">Resumo de Bônus</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center p-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)]">
+              <span class="text-[var(--text-mute)]">Indicações diretas</span>
+              <span class="font-bold accent">R$ 160</span>
+            </div>
+            <div class="flex justify-between items-center p-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)]">
+              <span class="text-[var(--text-mute)]">Indicações indiretas (nível 2)</span>
+              <span class="font-bold accent">R$ 64</span>
+            </div>
+            <div class="flex justify-between items-center p-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)]">
+              <span class="text-[var(--text-mute)]">Indicações indiretas (nível 3)</span>
+              <span class="font-bold accent">R$ 28</span>
+            </div>
+            <div class="border-t border-[var(--border)] pt-4 mt-2">
+              <div class="flex justify-between items-center">
+                <span class="font-semibold">Total acumulado</span>
+                <span class="text-2xl font-bold accent">R$ 252</span>
+              </div>
+            </div>
+            <div class="text-xs text-[var(--text-mute)] mt-2">
+              Valores baseados no pacote Prata. Metas de indicação restantes: 2 para liberar saque integral.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="display text-3xl sm:text-4xl font-black mb-4">Resultados da Rede</h2>
+        <p class="text-[var(--text-mute)] max-w-2xl mx-auto">Membros que atingiram metas e liberaram seus saldos.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-[var(--accent)]/20 flex items-center justify-center font-bold text-[var(--accent)]">JM</div>
+            <div>
+              <div class="font-semibold">João M.</div>
+              <div class="text-sm text-[var(--text-mute)]">Ouro — 4 meses</div>
+            </div>
+          </div>
+          <p class="text-sm text-[var(--text-mute)] mb-4">
+            "Completei 8 indicados em 45 dias. Vesting cumprido e saque de R$ 18.400 liberado. A estrutura paga quem traz volume."
+          </p>
+          <div class="text-lg font-bold accent">R$ 18.400</div>
+        </div>
+
+        <div class="card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-[var(--accent)]/20 flex items-center justify-center font-bold text-[var(--accent)]">AS</div>
+            <div>
+              <div class="font-semibold">Ana S.</div>
+              <div class="text-sm text-[var(--text-mute)]">Prata — 2 meses</div>
+            </div>
+          </div>
+          <p class="text-sm text-[var(--text-mute)] mb-4">
+            "Entrei com Prata, trouxe 5 indicados diretos e mais 12 indiretos. Bônus R$ 3.200 já disponíveis para saque após vesting."
+          </p>
+          <div class="text-lg font-bold accent">R$ 3.200</div>
+        </div>
+
+        <div class="card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 rounded-full bg-[var(--accent)]/20 flex items-center justify-center font-bold text-[var(--accent)]">PR</div>
+          </div>
+          <div>
+            <div class="font-semibold">Pedro R.</div>
+            <div class="text-sm text-[var(--text-mute)]">Bronze — 6 meses</div>
+          </div>
+          <p class="text-sm text-[var(--text-mute)] mb-4">
+            "Rede consistente de 32 indicados totais. Metas sempre batidas. Saques regulares mantêm o ciclo sustentável."
+          </p>
+          <div class="text-lg font-bold accent">R$ 8.400</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join -->
+  <section id="join" class="py-16 px-4 bg-[var(--surface)]/50">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="display text-3xl sm:text-4xl font-black mb-4">Entre na Rede</h2>
+      <p class="text-[var(--text-mute)] mb-8">Preencha seus dados, selecione o pacote e gere seu link de indicação. Pagamento via PIX ou Boleto.</p>
+      <form id="joinForm" class="card rounded-2xl p-6 text-left">
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label class="block text-sm font-medium mb-2" for="name">Nome completo</label>
+            <input class="w-full px-4 py-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-colors focus-visible" id="name" type="text" required />
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-2" for="email">E-mail</label>
+            <input class="w-full px-4 py-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-colors focus-visible" id="email" type="email" required />
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2" for="phone">WhatsApp (para liberação)</label>
+          <input class="w-full px-4 py-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-colors focus-visible" id="phone" type="tel" required />
+        </div>
+        <div class="mb-4">
+          <label class="block text-sm font-medium mb-2">Pacote</label>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="flex items-center justify-center gap-2 p-3 rounded-lg border-2 border-[var(--border)] cursor-pointer hover:border-[var(--accent)] transition-colors has-[:checked]:border-[var(--accent)] has-[:checked]:bg-[var(--accent)]/10">
+              <input type="radio" name="package" value="bronze" class="sr-only" />
+              <span class="text-sm font-medium">Bronze<br><span class="text-xs text-[var(--text-mute)]">R$ 500</span></span>
+            </label>
+            <label class="flex items-center justify-center gap-2 p-3 rounded-lg border-2 border-[var(--accent)] bg-[var(--accent)]/10 cursor-pointer">
+              <input type="radio" name="package" value="prata" class="sr-only" checked />
+              <span class="text-sm font-medium">Prata<br><span class="text-xs text-[var(--text-mute)]">R$ 2.000</span></span>
+            </label>
+            <label class="flex items-center justify-center gap-2 p-3 rounded-lg border-2 border-[var(--border)] cursor-pointer hover:border-[var(--accent)] transition-colors has-[:checked]:border-[var(--accent)] has-[:checked]:bg-[var(--accent)]/10">
+              <input type="radio" name="package" value="ouro" class="sr-only" />
+              <span class="text-sm font-medium">Ouro<br><span class="text-xs text-[var(--text-mute)]">R$ 5.000</span></span>
+            </label>
+          </div>
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-medium mb-2">Código do indicador (opcional)</label>
+          <input class="w-full px-4 py-3 rounded-lg bg-[var(--canvas)] border border-[var(--border)] focus:border-[var(--accent)] outline-none transition-colors focus-visible" placeholder="Ex: REF-7X9B2" />
+        </div>
+        <button type="submit" class="w-full btn-accent py-4 rounded-xl text-lg focus-visible">
+          Gerar Link de Pagamento
+        </button>
+      </form>
+      <p class="text-xs text-[var(--text-mute)] mt-4">Após confirmação, você receberá seu link de indicação e as instruções de vesting por e-mail.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-[var(--border)] py-8 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-[var(--text-mute)]">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-[var(--accent)] flex items-center justify-center">
+          <svg class="w-5 h-5 text-[var(--canvas)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+        </div>
+        <span>Rede Ouro © 2026</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#" class="hover:text-[var(--text)] transition-colors">Termos</a>
+        <a href="#" class="hover:text-[var(--text)] transition-colors">Privacidade</a>
+        <a href="#" class="hover:text-[var(--text)] transition-colors">Suporte</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown
+    const countdownEl = document.getElementById('countdown');
+    function updateCountdown() {
+      const now = new Date();
+      const next = new Date();
+      next.setDate(next.getDate() + 3);
+      next.setHours(23,59,59,0);
+      const diff = next - now;
+      if (diff <= 0) {
+        countdownEl.textContent = 'Encerrado';
+        return;
+      }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      countdownEl.textContent = `${d}d ${h}h ${m}m`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+
+    // Level selection
+    document.querySelectorAll('[data-level]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const level = btn.dataset.level;
+        document.querySelectorAll('.level-card').forEach(c => c.classList.remove('active'));
+        btn.closest('.level-card').classList.add('active');
+      });
+    });
+
+    // Form submit
+    document.getElementById('joinForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const pkg = document.querySelector('input[name="package"]:checked').value;
+      alert(`Link de pagamento gerado para ${name}. Verifique seu e-mail para instruções de PIX/Boleto e link de indicação.`);
+    });
+  </script>
+<script>(function(){function pick(){var c=[];var r=document.getElementById('root');if(r&&r.firstElementChild)c.push(r.firstElementChild);if(r)c.push(r);var b=document.body;if(b&&b.firstElementChild)c.push(b.firstElementChild);if(b)c.push(b);for(var i=0;i<c.length;i++){try{var g=getComputedStyle(c[i]).backgroundColor;if(g&&g!=='rgba(0, 0, 0, 0)'&&g!=='transparent')return g;}catch(e){}}return null;}function sync(){var g=pick();if(g){document.documentElement.style.background=g;document.body.style.background=g;try{parent.postMessage({__bg:{picked:g}},'*');}catch(e){}}}window.addEventListener('load',sync);document.addEventListener('DOMContentLoaded',sync);var n=0,t=setInterval(function(){sync();if(++n>12)clearInterval(t);},200);})();</script></body>
+</html>
